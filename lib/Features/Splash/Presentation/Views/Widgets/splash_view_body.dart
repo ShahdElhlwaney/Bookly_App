@@ -2,12 +2,11 @@
 
 import 'package:book_app/Features/Splash/Presentation/Views/Widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../../../../../Core/Constants.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/utils/assets.dart';
-import '../../../../Home/Presentation/Views/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
     const SplashViewBody({super.key});
@@ -29,7 +28,7 @@ class _SplashViewBodyState extends State<SplashViewBody>with SingleTickerProvide
 
  void navigationToHome() {
    Future.delayed(const Duration(seconds: 2),(){
-     Get.to(()=>const HomeView(),transition:Transition.fade,duration:kTransitionDuration );
+      GoRouter.of(context).push(AppRouter.kHomeView);
    });
  }
 
