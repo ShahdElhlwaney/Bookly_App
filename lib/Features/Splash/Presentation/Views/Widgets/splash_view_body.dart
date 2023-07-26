@@ -1,7 +1,13 @@
 
 
-import 'package:book_app/Features/Presentation/Views/Widgets/sliding_text.dart';
+import 'package:book_app/Features/Splash/Presentation/Views/Widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../../../Core/Constants.dart';
+import '../../../../../Core/utils/assets.dart';
+import '../../../../Home/Presentation/Views/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
     const SplashViewBody({super.key});
@@ -18,7 +24,14 @@ class _SplashViewBodyState extends State<SplashViewBody>with SingleTickerProvide
   void initState() {
    super.initState();
       initSlidingAnimation();
+      navigationToHome();
   }
+
+ void navigationToHome() {
+   Future.delayed(const Duration(seconds: 2),(){
+     Get.to(()=>const HomeView(),transition:Transition.fade,duration:kTransitionDuration );
+   });
+ }
 
 
   @override
@@ -33,13 +46,13 @@ class _SplashViewBodyState extends State<SplashViewBody>with SingleTickerProvide
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,//make the width the largest available width
       children: [
-        Image.asset("images/logo.png",fit: BoxFit.fill),
+        Image.asset(Assets.logo,fit: BoxFit.fill),
         const SizedBox(height: 6,),
         SlidingText(slidingAnimation: slidingAnimation)
       ],
     );
   }
-  
+
  void initSlidingAnimation() {
    animationController= AnimationController(
      vsync: this
