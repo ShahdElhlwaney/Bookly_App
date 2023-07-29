@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 import 'package:book_app/Core/utils/styles.dart';
 import 'package:book_app/Features/Home/Presentation/Views/Widgets/booking_rating.dart';
 import 'package:book_app/Features/Home/Presentation/Views/Widgets/similar_books_list_view.dart';
@@ -9,11 +10,16 @@ import 'button_action.dart';
 import 'custom_book_details_app_bar.dart';
 import 'custom_book_image.dart';
 
+=======
+import 'package:flutter/material.dart';
+
+>>>>>>> 520b2ee199c0ed5e8d9067db6402d6b52267089f
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     var width=MediaQuery.of(context).size.width;
     return  CustomScrollView(
 
@@ -75,3 +81,8 @@ class BookDetailsViewBody extends StatelessWidget {
 
 
 
+=======
+    return Container();
+  }
+}
+>>>>>>> 520b2ee199c0ed5e8d9067db6402d6b52267089f
