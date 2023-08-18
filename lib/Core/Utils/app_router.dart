@@ -1,47 +1,56 @@
-
+import 'package:book_app/Core/Utils/service_locator.dart';
+import 'package:book_app/Features/Home/Data/Repos/home_repo_impl.dart';
+import 'package:book_app/Features/Search/Data/Repos/search_repo_impl.dart';
+import 'package:book_app/Features/Search/Presentation/Views/search_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-<<<<<<< HEAD:lib/Core/Utils/app_router.dart
+import '../../Features/Home/Data/Models/BookModel.dart';
+import '../../Features/Home/Presentation/Manger/SimilarBooksCubit/similar_books_cubit.dart';
 import '../../Features/Home/Presentation/Views/book_details_view.dart';
-=======
->>>>>>> 520b2ee199c0ed5e8d9067db6402d6b52267089f:lib/Core/utils/app_router.dart
+
 import '../../Features/Home/Presentation/Views/home_view.dart';
+import '../../Features/Search/Presentation/Manager/SearchBooksCubit/search_books_cubit.dart';
 import '../../Features/Splash/Presentation/Views/splash_view.dart';
 
-abstract class AppRouter
-{
-<<<<<<< HEAD:lib/Core/Utils/app_router.dart
+abstract class AppRouter {
 
-  static const kHomeView='/homeView';
-  static const kBookDetailsView='/bookDetailsView';
 
-=======
- static const kHomePath='/homeView';
->>>>>>> 520b2ee199c0ed5e8d9067db6402d6b52267089f:lib/Core/utils/app_router.dart
+  static const kHomeView = '/homeView';
+  static const kBookDetailsView = '/bookDetailsView';
+  static const kSearchView = '/searchView';
+
 // GoRouter configuration
- static final router = GoRouter(
+  static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
-<<<<<<< HEAD:lib/Core/Utils/app_router.dart
+
         path: kHomeView,
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) => HomeView(),
       ),
       GoRoute(
-        path:kBookDetailsView ,
-        builder: (context, state) => const BookDetailsView(),
+        path: kBookDetailsView,
+        builder: (context, state) =>
+            BlocProvider<SimilarBooksCubit>(
+                create: (context) =>
+                    SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
+                child: BookDetailsView(bookModel: state.extra as BookModel,)),
       ),
-=======
-        path: kHomePath,
-        builder: (context, state) => const HomeView(),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) =>
+            BlocProvider(
+              create: (context) => SearchBooksCubit(getIt.get<SearchRepoImpl>()),
+              child: const SearchView(),
+            ),
       ),
->>>>>>> 520b2ee199c0ed5e8d9067db6402d6b52267089f:lib/Core/utils/app_router.dart
+
+
     ],
   );
-
 
 
 }
