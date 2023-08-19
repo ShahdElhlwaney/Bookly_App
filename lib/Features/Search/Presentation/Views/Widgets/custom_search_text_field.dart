@@ -1,19 +1,31 @@
-import 'package:book_app/Core/Utils/service_locator.dart';
-import 'package:book_app/Features/Search/Data/Repos/search_repo_impl.dart';
 import 'package:book_app/Features/Search/Presentation/Manager/SearchBooksCubit/search_books_cubit.dart';
+import 'package:book_app/Features/Search/Presentation/Views/Widgets/search_result_list_view.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({Key? key, required this.onChanged})
-      : super(key: key);
-  final Function(String)? onChanged;
+import '../../../../Home/Data/Models/BookModel.dart';
 
+class CustomSearchTextField extends StatelessWidget {
+   CustomSearchTextField({Key? key})
+      : super(key: key);
+String? input;
+TextEditingController controller=TextEditingController();
   @override
   Widget build(BuildContext context) {
+    List<BookModel>li=[];
     return TextField(
-      onChanged: onChanged,
+      onSubmitted: (t){},
+      controller:controller ,
+      onChanged: (t){
+        input=t;
+        if(input=='')
+        {
+          controller.clear();
+        }
+        BlocProvider.of<SearchBooksCubit>(context).getSearchBooks(title: input??'');
+      },
       decoration: InputDecoration(
           hintText: 'Search',
           enabledBorder: buildOutlineInputBorder(),

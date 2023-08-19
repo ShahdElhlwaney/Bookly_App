@@ -47,7 +47,7 @@ class VolumeInfo {
     allowAnonLogging = json['allowAnonLogging'];
     contentVersion = json['contentVersion'];
     panelizationSummary = json['panelizationSummary'] != null ? PanelizationSummary.fromJson(json['panelizationSummary']) : null;
-    imageLinks = json['imageLinks']!=null?ImageLinks.fromJson(json['imageLinks']):null;
+    imageLinks = json['imageLinks']!=null?ImageLinks.fromJson(json['imageLinks']as Map<String,dynamic>):null;
     language = json['language'];
     previewLink = json['previewLink'];
     infoLink = json['infoLink'];

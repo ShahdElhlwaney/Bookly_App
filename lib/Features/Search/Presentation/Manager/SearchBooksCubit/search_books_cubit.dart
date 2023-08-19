@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:book_app/Features/Home/Data/Repos/home_repo.dart';
 import 'package:book_app/Features/Search/Data/Repos/search_repo.dart';
+import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../../Core/Error/failures.dart';
 import '../../../../Home/Data/Models/BookModel.dart';
 
 
@@ -16,14 +19,21 @@ class SearchBooksCubit extends Cubit<SearchBooksState> {
   {
     emit(SearchBooksLoading());
     var result=await  searchRepo.getSearchBooks(title: title);
-
     result.fold((failure) {
       emit(SearchBooksFailure(failure.errMessage));
     }, (books) {
-      //
+      if(title.isEmpty)
+        {
 
-      emit(SearchBooksSuccess(books));
+          books=[];
+        }
+      else
+        {
+          emit(SearchBooksSuccess(books));
+        }
     });
+
+   // return  right(li);
   }
 
 }

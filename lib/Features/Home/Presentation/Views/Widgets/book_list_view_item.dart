@@ -50,7 +50,7 @@ class BookListViewItem extends StatelessWidget {
                       Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold
                       ),),
-                      const Spacer(),
+                     const Spacer(),
                        const BookRating(count: '0', rating: '0',)
                     ],
                   )

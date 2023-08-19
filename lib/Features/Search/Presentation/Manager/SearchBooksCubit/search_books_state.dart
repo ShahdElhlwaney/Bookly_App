@@ -12,4 +12,3 @@ class SearchBooksFailure extends SearchBooksState {
   final String errMessage;
   SearchBooksFailure(this.errMessage);
 }
-

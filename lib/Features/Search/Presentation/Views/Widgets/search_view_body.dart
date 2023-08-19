@@ -13,31 +13,18 @@ import 'custom_search_text_field.dart';
 class SearchViewBody extends StatelessWidget{
   const SearchViewBody({Key? key, }) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    String? t;
-    return  Padding(
+  Widget build(BuildContext context)
+  {
+    return   Padding(
       padding:  EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomSearchTextField(onChanged: (String? text )
-          {
-                t=text;
-               /* if(t!=null)
-                  {
-                    BlocProvider.of<SearchBooksCubit>(context)
-                        .getSearchBooks(title:t! );
-
-                  }*/
-
-
-
-
-          },),
+          CustomSearchTextField(),
           SizedBox(height: 16,),
           Text('Result Search',style: Styles.textStyle18,),
           SizedBox(height: 26,),
-          Expanded(child: SearchResultListView())
+         Expanded(child: SearchResultListView())
         ],
       ),
     );

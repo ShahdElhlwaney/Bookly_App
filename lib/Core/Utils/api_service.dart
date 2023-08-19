@@ -1,6 +1,7 @@
 
 
 
+
 import 'package:dio/dio.dart';
 
 class ApiService
@@ -15,7 +16,12 @@ class ApiService
 
     var response= await _dio.get("$_baseUrl$endPoint");
 
+
    return response.data;
   }
+
+
+
+
 
 }

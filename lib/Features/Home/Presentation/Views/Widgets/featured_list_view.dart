@@ -27,7 +27,8 @@ class FeaturedListViewItem extends StatelessWidget {
                         onTap: (){
                           GoRouter.of(context).push(AppRouter.kBookDetailsView,extra: state.books[index]);
                         }
-                      ,child: CustomBookImage(imageUrl: state.books[index].volumeInfo.imageLinks?.thumbnail??'',)),
+                      ,child: CustomBookImage(imageUrl: state.books[index].volumeInfo.imageLinks?.thumbnail??
+                          '"http://books.google.com/books/content?id=LWCYBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"',)),
                     );
                   }),
             );
