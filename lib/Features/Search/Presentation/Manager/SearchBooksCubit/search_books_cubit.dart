@@ -18,19 +18,19 @@ class SearchBooksCubit extends Cubit<SearchBooksState> {
   Future<void> getSearchBooks({required String title})async
   {
     emit(SearchBooksLoading());
-    var result=await  searchRepo.getSearchBooks(title: title);
+    Either<Failure,List<BookModel>> result=await  searchRepo.getSearchBooks(title: title);
     result.fold((failure) {
       emit(SearchBooksFailure(failure.errMessage));
     }, (books) {
-      if(title.isEmpty)
-        {
+         if(title=='')
+           {
+             books=[];
+             emit(SearchBooksSuccess(books));
+           }
+          else {
+           emit(SearchBooksSuccess(books));
+         }
 
-          books=[];
-        }
-      else
-        {
-          emit(SearchBooksSuccess(books));
-        }
     });
 
    // return  right(li);

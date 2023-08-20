@@ -23,7 +23,7 @@ class BookListViewItem extends StatelessWidget {
         },
         child: Row(
           children: [
-        CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail??''),
+        CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail??'http://books.google.com/books/content?id=8shfDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'),
             const SizedBox(width: 16,),
             Expanded(
               child: Column(

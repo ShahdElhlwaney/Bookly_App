@@ -18,14 +18,20 @@ class SearchResultListView extends StatelessWidget {
         if (state is SearchBooksSuccess) {
           if (state.books.isNotEmpty)
             {
+              print('ssssssssssssssssssssssssss');
+              print(state.books.length);
+              print(state.books[5].volumeInfo.authors![0]);
             return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 itemCount:
                 state.books.length,
-                itemBuilder: (context, index) {
-                  return Padding(
+
+                itemBuilder: (contxt, index) {
+
+                  return //Text(state.books[index].volumeInfo.title!);
+                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: BookListViewItem(
                       bookModel: state.books[index],),
@@ -36,7 +42,7 @@ class SearchResultListView extends StatelessWidget {
         }
           else
             {
-              return Container();
+              return const Center(child: Text('Search For Any Book'));
             }
             }
         else if(state is SearchBooksFailure)  {
@@ -49,7 +55,7 @@ class SearchResultListView extends StatelessWidget {
         }
         else
         {
-          return Center(child: Text('No Book Found',style: Styles.textStyle30,));
+          return const Center(child: Text('Search For Any Book',style: Styles.textStyle30,));
         }
 
     }
