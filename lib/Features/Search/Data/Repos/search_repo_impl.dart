@@ -16,7 +16,6 @@ class SearchRepoImpl implements SearchRepo
   @override
   Future<Either<Failure, List<BookModel>>> getSearchBooks({required String title})async {
    try{
-   // List<BookModel>books=[];
 
     var result=await apiService.get(endPoint:
     'volumes?q=entitle:$title&Filtering=free-ebooks&download=epub');//

@@ -14,28 +14,22 @@ class SearchResultListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBooksCubit, SearchBooksState>(
       builder: (context, state) {
-
         if (state is SearchBooksSuccess) {
           if (state.books.isNotEmpty)
             {
-              print('ssssssssssssssssssssssssss');
-              print(state.books.length);
-              print(state.books[5].volumeInfo.authors![0]);
+
             return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 itemCount:
                 state.books.length,
-
                 itemBuilder: (contxt, index) {
-
                   return //Text(state.books[index].volumeInfo.title!);
                    Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: BookListViewItem(
                       bookModel: state.books[index],),
-
                   );
                 }
             );
